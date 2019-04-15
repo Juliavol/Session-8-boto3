@@ -2,8 +2,8 @@
 
 import argparse
 import boto3
-import config
-import awsops
+from . import config
+from . import awsops
 
 def args_parser():
     """ validate arguments and return them """

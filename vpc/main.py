@@ -1,4 +1,4 @@
-import awsops
+from . import awsops
 
 def main():
     aws = awsops.AwsOperation()

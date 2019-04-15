@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 
-import config
+from . import config
 import boto3
 
 client = boto3.client('ec2')
-vpc = ec2.Vpc('id')
+vpc = client.Vpc('id')
+ec2 = boto3.resource('ec2')
+internet_gateway = ec2.InternetGateway('id')
 
 class awsOperations():
 
@@ -32,7 +34,10 @@ class awsOperations():
 
     def attach_internet_gateway(self, vpc_id, igw_id):
         """ Attach a given igw to a given vpc """
-	pass
+        response = internet_gateway.attach_to_vpc(
+            VpcId='string'
+        )
+
 
     def associate_dhcp_options(self, vpc_id, dhcp_options_id):
         """ Associate a given dhcp_options to a given vpc """

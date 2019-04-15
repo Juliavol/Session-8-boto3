@@ -14,7 +14,14 @@ def args_parser():
     return parser.parse_args()
 
 
-def create_tags(vpc_id):
+def create_tags(ec2, vpc_id):
+    """
+    Changes the name of the VPC to opsschool
+
+    :param ec2: Boto EC2 Service Client Instance
+    :param vpc_id: String
+    :return: None
+    """
     ec2.create_tags(
         Resources=[
             vpc_id,
@@ -27,11 +34,12 @@ def create_tags(vpc_id):
         ]
     )
 
+
 def main():
     args = args_parser()
-    ec2 = boto3.client('ec2', args.vpcid)
-    create_tags(args.vpcid)
+    ec2 = boto3.client('ec2', args.region)
+    create_tags(ec2, args.vpcid)
+
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        main()
+    main()

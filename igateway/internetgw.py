@@ -4,7 +4,7 @@ Create Internet gateway, Dhcp options and attach to a vpc
 """
 
 import argparse
-import awsops
+from . import awsops
 
 def select_vpc(vpc_ids):
     """
